@@ -1,10 +1,10 @@
-package counter;
+package com.juzo.util.counter;
 
-public class UnsafeCounter implements Counter {
+public class UnsafeCounter implements ConcurrentCounter {
     private int counter = 0;
 
     @Override
-    public void increment() {
+    public void increment(int callerId) {
         counter++;
 
     }
