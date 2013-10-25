@@ -1,17 +1,24 @@
-package counter;
+package com.juzo.util.counter;
 
-public class PaddedNonBlockingCounter implements Counter {
-    private int counter = 0;
+public class PaddedNonBlockingCounter implements ConcurrentCounter {
+    private final int[] counter; // TODO: introduce padding in a new structure
+
+    public NonBlockingCounter(int threadCount){
+        counter = new int[threadCount];
+    }
 
     @Override
-    public void increment() {
-        counter++;
-
+    public void increment(int callerId) {
+        counter[callerId]++; // TODO: not safe for ArrayIndexOutOfBoundsException
     }
 
     @Override
     public int get() {
-        return counter;
+        int aggregatedCounter = 0;
+        for(int i : counter){
+            aggregatedCounter += i;
+        }
+        return aggregatedCounter;
     }
 
 }
