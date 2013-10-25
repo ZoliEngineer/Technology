@@ -1,10 +1,10 @@
-package counter;
+package com.juzo.util.counter;
 
-public class SyncronizedCounter implements Counter {
+public class SyncronizedCounter implements ConcurrentCounter {
     private int counter = 0;
 
     @Override
-    public synchronized void increment() {
+    public synchronized void increment(int callerId) {
         counter++;
     }
 
