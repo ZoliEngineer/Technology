@@ -1,12 +1,12 @@
-package counter;
+package com.juzo.util.counter;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AtomicCounter implements Counter {
+public class AtomicCounter implements ConcurrentCounter {
     private final AtomicInteger counter = new AtomicInteger();
 
     @Override
-    public void increment() {
+    public void increment(int callerId) {
         counter.incrementAndGet();
 
     }
